@@ -8,15 +8,6 @@ if (!fs.existsSync(LOG_DIR)) {
   fs.mkdirSync(LOG_DIR, { recursive: true });
 }
 
-function getTodayLogFile() {
-  const now = new Date();
-  const year = now.getFullYear();
-  const month = String(now.getMonth() + 1).padStart(2, '0');
-  const day = String(now.getDate()).padStart(2, '0');
-
-  return path.join(LOG_DIR, `api-hits-${year}-${month}-${day}.log`);
-}
-
 function formatTimestamp() {
   const now = new Date();
 
@@ -38,11 +29,7 @@ setInterval(() => {
   const logLine =
     `${timestamp} | API hits (last 3 hours): ${apiHitCount.get()}\n`;
 
-  fs.appendFile(logFile, logLine, (err) => {
-    if (err) {
-      console.error('Failed to write API hit log', err);
-    }
-  });
+ console.log(logLine)
 
   apiHitCount.reset();
 }, 1000);
