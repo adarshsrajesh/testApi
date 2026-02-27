@@ -24,7 +24,6 @@ function formatTimestamp() {
 
 setInterval(() => {
   const timestamp = formatTimestamp();
-  const logFile = getTodayLogFile();
 
   const logLine =
     `${timestamp} | API hits (last 3 hours): ${apiHitCount.get()}\n`;
